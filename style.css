@@ -1,0 +1,10 @@
+// Додамо повідомлення при кліку на кнопку "Замовити"
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            alert('Дякуємо за замовлення! Ми з вами зв’яжемося через Telegram.');
+        });
+    });
+});

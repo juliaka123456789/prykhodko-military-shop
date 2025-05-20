@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prykhodko Military Shop</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: #333;
+        }
+
+        header {
+            background-color: #1c1c1c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 260px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.03);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product-card h2 {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .order-btn {
+            background-color: #0088cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .order-btn:hover {
+            background-color: #005e99;
+        }
+
+        footer {
+            background-color: #1c1c1c;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: #00bfff;
+            text-decoration: none;
+        }
+
+        #cart-icon {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            cursor: pointer;
+            background: #fff;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        #cart-icon:hover {
+            background-color: #e0e0e0;
+        }
+
+        .all-products {
+            padding: 20px;
+            background-color: #fff;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .all-products h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product-list .product-card {
+            width: 220px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="images/24.jpg" alt="Prykhodko Military Shop Logo" style="height: 60px; vertical-align: middle; margin-right: 10px;">
+    <h1 style="display: inline-block; vertical-align: middle;">Prykhodko Military Shop</h1>
+    <div style="margin-top: 20px; text-align: center;">
+        <input type="text" id="searchInput" placeholder="Пошук за назвою..." style="padding: 8px; width: 200px; margin-right: 10px;">
+        <select id="priceFilter" style="padding: 8px;">
+            <option value="all">Всі ціни</option>
+            <option value="lt500">до 500 грн</option>
+            <option value="500to1000">500-1000 грн</option>
+            <option value="gt1000">понад 1000 грн</option>
+        </select>
+    </div>
+    <div id="cart-icon" onclick="viewCart()">🛒 Кошик (<span id="cart-count">0</span>)</div>
+</header>
+
+<div class="product-grid">
+<!-- START OF PRODUCTS -->
+<div class="product-card">
+    <img src="images/1.jpg" alt="Тактична бойова сорочка Убакс Мультикам, розмір L" />
+    <h2>Тактична бойова сорочка Убакс Мультикам, розмір L</h2>
+    <p>Ціна: 800 грн</p>
+    <button class="order-btn" data-product="Тактична бойова сорочка Убакс Мультикам, розмір L">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/2.jpg" alt="Нашивка Патч" />
+    <h2>Нашивка Патч</h2>
+    <p>Ціна: 80 грн</p>
+    <button class="order-btn" data-product="Нашивка Патч (80 грн)">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/3.jpg" alt="Панама + літній баф" />
+    <h2>Панама + літній баф</h2>
+    <p>Ціна: 300 грн</p>
+    <button class="order-btn" data-product="Панама + літній баф">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/4.jpg" alt="Нашивка Патч" />
+    <h2>Нашивка Патч</h2>
+    <p>Ціна: 100 грн</p>
+    <button class="order-btn" data-product="Нашивка Патч (100 грн)">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/5.jpg" alt="Нашивка Патч" />
+    <h2>Нашивка Патч</h2>
+    <p>Ціна: 100 грн</p>
+    <button class="order-btn" data-product="Нашивка Патч (100 грн)">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/6.jpg" alt="Кепка жорстка мультикам (британка)" />
+    <h2>Кепка жорстка мультикам (британка)</h2>
+    <p>Ціна: 200 грн</p>
+    <button class="order-btn" data-product="Кепка жорстка мультикам (британка)">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/7.jpg" alt="Нашивка Патч" />
+    <h2>Нашивка Патч</h2>
+    <p>Ціна: 120 грн</p>
+    <button class="order-btn" data-product="Нашивка Патч (120 грн)">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/8.jpg" alt="Нашивка Патч" />
+    <h2>Нашивка Патч</h2>
+    <p>Ціна: 150 грн</p>
+    <button class="order-btn" data-product="Нашивка Патч (150 грн)">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/9.jpg" alt="Нашивка Патч" />
+    <h2>Нашивка Патч</h2>
+    <p>Ціна: 125 грн</p>
+    <button class="order-btn" data-product="Нашивка Патч (125 грн)">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/10.jpg" alt="Кепка мультикам" />
+    <h2>Кепка мультикам</h2>
+    <p>Ціна: 200 грн</p>
+    <button class="order-btn" data-product="Кепка мультикам">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/11.jpg" alt="Шорти-карго з комуфляжним принтом, розмір L" />
+    <h2>Шорти-карго з комуфляжним принтом, розмір L</h2>
+    <p>Ціна: 550 грн</p>
+    <button class="order-btn" data-product="Шорти-карго з комуфляжним принтом, розмір L">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/12.jpg" alt="Чоловічі ретро ботинки, розмір 44" />
+    <h2>Чоловічі ретро ботинки, розмір 44</h2>
+    <p>Ціна: 900 грн</p>
+    <button class="order-btn" data-product="Чоловічі ретро ботинки, розмір 44">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/13.jpg" alt="Шапка Xlamulu Skullcap" />
+    <h2>Шапка Xlamulu Skullcap</h2>
+    <p>Ціна: 180 грн</p>
+    <button class="order-btn" data-product="Шапка Xlamulu Skullcap">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/14.jpg" alt="Шапка Xlamulu Skullcap" />
+    <h2>Шапка Xlamulu Skullcap</h2>
+    <p>Ціна: 180 грн</p>
+    <button class="order-btn" data-product="Шапка Xlamulu Skullcap">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/15.jpg" alt="Чоловічі комуфляжні штани, розмір L" />
+    <h2>Чоловічі комуфляжні штани, розмір L</h2>
+    <p>Ціна: 1100 грн</p>
+    <button class="order-btn" data-product="Чоловічі комуфляжні штани, розмір L">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/16.jpg" alt="Чоловічі легкі кросівки, розмір 44" />
+    <h2>Чоловічі легкі кросівки, розмір 44</h2>
+    <p>Ціна: 1200 грн</p>
+    <button class="order-btn" data-product="Чоловічі легкі кросівки, розмір 44">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/17.jpg" alt="Нашивка Патч" />
+    <h2>Нашивка Патч</h2>
+    <p>Ціна: 80 грн</p>
+    <button class="order-btn" data-product="Нашивка Патч (80 грн)">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/18.jpg" alt="Чоловіча військова комуфляжна сорочка з напівзакритим передом та реглановими рукавами, розмір L" />
+    <h2>Чоловіча військова комуфляжна сорочка, розмір L</h2>
+    <p>Ціна: 850 грн</p>
+    <button class="order-btn" data-product="Чоловіча військова комуфляжна сорочка, розмір L">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/19.jpg" alt="Літні кросівки, дихаючі, легкі та зручні, розмір 43, 44" />
+    <h2>Літні кросівки, розмір 43, 44</h2>
+    <p>Ціна: 800 грн</p>
+    <button class="order-btn" data-product="Літні кросівки, розмір 43, 44">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/20.jpg" alt="Кросівки камуфляжні, розмір 43" />
+    <h2>Кросівки камуфляжні, розмір 43</h2>
+    <p>Ціна: 1200 грн</p>
+    <button class="order-btn" data-product="Кросівки камуфляжні, розмір 43">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/21.jpg" alt="Тактичні кросівки, розмір 43" />
+    <h2>Тактичні кросівки, розмір 43</h2>
+    <p>Ціна: 900 грн</p>
+    <button class="order-btn" data-product="Тактичні кросівки, розмір 43">Замовити</button>
+</div>
+<div class="product-card">
+    <img src="images/22.jpg" alt="Патч тактичний (відрізок)" />
+    <h2>Патч тактичний (відрізок)</h2>
+    <p>Ціна: 80 грн</p>
+    <button class="order-btn" data-product="Патч тактичний (відрізок)">Замовити</button>
+</div>
+<!-- END OF PRODUCTS -->
+</div>
+
+<footer>
+    <p>© 2025 Prykhodko Military Shop</p>
+    <p>Зв'язок: <a href="mailto:support@militaryshop.com">support@militaryshop.com</a></p>
+</footer>
+
+<script>
+    let cart = [];
+
+    const addToCart = (product) => {
+        cart.push(product);
+        document.getElementById('cart-count').innerText = cart.length;
+    }
+
+    const orderButtons = document.querySelectorAll('.order-btn');
+    orderButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const product = event.target.getAttribute('data-product');
+            addToCart(product);
+        });
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    const priceFilter = document.getElementById('priceFilter');
+
+    const filterProducts = () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const priceRange = priceFilter.value;
+        const productCards = document.querySelectorAll('.product-card');
+
+        productCards.forEach(card => {
+            const productName = card.querySelector('h2').innerText.toLowerCase();
+            const productPrice = parseInt(card.querySelector('p').innerText.replace('Ціна: ', '').replace(' грн', ''));
+
+            let matchesSearch = productName.includes(searchTerm);
+            let matchesPrice = false;
+
+            if (priceRange === 'all') {
+                matchesPrice = true;
+            } else if (priceRange === 'lt500') {
+                matchesPrice = productPrice < 500;
+            } else if (priceRange === '500to1000') {
+                matchesPrice = productPrice >= 500 && productPrice <= 1000;
+            } else if (priceRange === 'gt1000') {
+                matchesPrice = productPrice > 1000;
+            }
+
+            if (matchesSearch && matchesPrice) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    };
+
+    searchInput.addEventListener('input', filterProducts);
+    priceFilter.addEventListener('change', filterProducts);
+
+    // Функція для відкриття кошика
+    function viewCart() {
+        alert("Ваш кошик: " + cart.join(", "));
+    }
+</script>
+
+</body>
+</html>
